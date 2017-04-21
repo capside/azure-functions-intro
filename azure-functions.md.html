@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Azure Functions</title>
+    <meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Cardo|Montserrat" rel="stylesheet"> 
+    <style>
+
+	  body {
+		color: white;
+		font-family: 'Cardo', sans-serif;
+	  }
+	  
+	  h1, h2, h3 {
+			font-family: 'Montserrat', sans-serif;
+	  }
+	  
+	  a {
+		  text-decoration: none;
+		  color : white;
+		  border-bottom: 1px dotted white;
+	  }
+	  
+	  .remark-slide-content h1 {
+		 text-align : center;
+		 font-size: 4em;
+	  }
+	  
+	  .remark-slide-content h2 {
+		 margin : 0.5em 0em 0em 0.5em;
+		 font-size: 2.2em;
+	  }	  
+	  
+	   .remark-slide-content h3 {
+			margin-top : 14px;
+			margin-bottom: 0px;
+	   }
+	  
+	  .remark-slide-content {
+	     font-size: 2.2em;
+		 padding: 0;
+		 background-size: cover !important;
+	  }	  
+	  ul {
+		   list-style-type : none;
+	  }
+	  .remark-slide-content > ul {
+  		   line-height: 1.7em;
+		   width: 80%; 
+		   margin: 1em auto 0 auto;
+	  }
+	  
+	  .remark-container {
+			background-image: url(background-c.jpg)
+	  }
+	  .remark-slide-content {
+			background-image: url(background-f.jpg)
+	  }
+	  
+	  pre {
+		   background-color: black;
+		   margin: 8px;
+		   border-radius: 8px;
+		   padding: 16px;
+	  }
+	  
+	  .compact ul {
+ 		  line-height : 1.2em;
+	  }
+	  
+	  .left-column {
+		margin-left: 5%;
+        width: 45%;
+        float: left;
+      }
+      .right-column {
+        width: 45%;
+        float: left;
+      }	  
+
+	  img {
+		width: 100%;
+		margin: 0 auto;
+	  }
+	  
+	  .left-column img, .right-column img {
+	    margin-left: 1%;
+		max-width: 96%;
+		border: 4px solid white;
+		border-radius: 1%;
+	  }
+	  
+	  #-globalazure {
+		font-size: 3.25em;
+	  }
+	  #-cat_azure{
+		text-align: center;
+	  }
+	  .twitters {
+		  position: absolute;
+		  bottom: 0px;
+		  font-size: 2em;
+		  font-weight: bold;
+		  font-family: 'Montserrat', sans-serif;
+	  }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+background-image: url(azure-functions-logo.png)	
+---
+# #GlobalAzure	
+## @CAT_azure
+---
+
+![sponsors](azure-boot-sponsors.png)
+
+---
+## Javi
+
+.left-column[
+Soy Tech Evangelist en Capside, profe en programar.cloud y tengo un turbio pasado como desarrollador.
+
+### programar.cloud
+### @ciberado
+]
+.right-column[
+	![logo](javi.jpg)
+]
+
+---
+## Capside
+.left-column[
+
+![logo](capside-oficina.jpg)
+### capside.com
+### @capside
+
+]
+.right-column[
+	![logo](capside-oficina-2.jpg)
+]
+
+---
+# ¿Cuánto te cuesta un usuario?
+
+---
+# ¿Y cuánto te cuestan 100 usuarios?
+
+---
+# ¿Y si tienes 0 usuarios?
+
+---
+background-image: url(squirtlecrying.gif)
+
+---
+# Azure Functions
+
+---
+## Ventajas 
+
+* Pago microgranular
+* Basado en Azure Webjobs
+* Gestionado (casi Serverless)
+* Integrado con App Insights
+* [Open source](https://github.com/azure/azure-webjobs-sdk-script)
+* Disco flexible (hasta 5TB)
+???
+Webjobs is not a container so it does NOT have a warm up period
+
+---
+background-image: url(squirtlehappy.gif)
+
+---
+## Modelo de precio
+
+* Consumption plan
+	* GB-sec (OMG)
+	* Max: 5min y 1.5GB
+	* Puede especificarse una cuota diaria
+* App Service Plan
+	* No hay límite de tiempo
+
+???
+Contractory information about sub second pricing
+AppServicePlan can be more efficiente with very high workloads
+AppServicePlan does not have 5 min limit
+---
+## Modelo de precio
+
+
+![Jackie Chan](jackie.jpg)
+---
+# [Calculator](http://serverlesscalc.com)
+---
+background-image: url(jackie-happy.jpg)
+
+---
+## Programación
+
+* La unidad de ejecución es la rutina
+* Se agrupan en aplicaciones
+* Ejecución por eventos (triggers)
+* Proxies para crear APIs
+
+---
+## Lenguajes soportados
+
+* C#, F#
+* Node, Python, Php
+* Batch, bash, powershell
+* Ejecutables
+
+---
+## Triggers
+
+.left-column[
+* Timer
+* Blob
+* Http
+* GitHub webhook
+* EventHub
+]
+.right-column[
+* Generic webhook
+* ServiceBusQueue
+* ServiceBusTopic
+* Queue
+]
+
+---
+class: compact
+
+## Integraciones
+
+* OAuth (Facebook, Twitter, etc)
+* Azure DocumentDB
+* Bot framework
+* SendGrid
+* Azure Mobile Apps (tables)
+* Azure Notification Hubs
+* Twilio (SMS messages)
+* External file
+* External table
+
+---
+## Herramientas
+
+* El portal web es un IDE
+* Integrado con VS para C#*
+* Dispone de una [CLI](https://blogs.msdn.microsoft.com/appserviceteam/2016/12/01/running-azure-functions-locally-with-the-cli/) para emular localmente
+???
+As Apr/2017 VS2017 are in development
+---
+
+# ¡¡Soportada por [Serverless](http://serverless.com)!!
+---
+background-image: url(batman-thumbs-up.jpg)
+
+---
+## Despliegue
+
+.left-column[
+* Git
+* VSTS
+* CLI
+]
+.right-column[
+* Visual Studio
+* Dropbox, Onedrive
+* Serverless
+]
+.left-column[
+* NPM
+* NuGet
+]
+???
+Functions apps can be deployment as a library 
+
+---
+# Show me the code
+---
+```
+const util = require('util');
+const http = require('http');
+
+module.exports = function (context, req) {
+    context.log(util.inspect(req, {showHidden: false, depth: null}))
+    if (!req.body && !req.body.name) {
+        context.res = { status: 400, body: "Where is the name?" };
+        context.done();
+        return;
+    }
+    var options = { host: 'pastebin.com', path: '/raw/UNRZc3nc' };    
+    http.request(options, function(pasteBinResponse) {
+        pasteBinResponse.on('data', function (pasteBinText) {
+            context.res = {
+                status: 200, 
+                body: pasteBinText + ' ' + req.body.name + 
+                      ' (' + req.headers['x-forwarded-for'] + ')'
+            };
+        });
+        pasteBinResponse.on('end', function () {
+            context.done();
+        });        
+    }).end();
+};
+```
+
+---
+# [Demo!](http://aka.ms/TryFunctions)
+
+???
+Para probarla desde línea de comando:
+```
+echo {   "name": "Javi" } | http POST <FUNCTION-URL>
+```
+---
+background-image: url(follet-tortuga.png)
+
+---
+# Stateless
+---
+# Falla pronto y paga menos
+---
+# Circuit breaker
+---
+# Idem potencia
+
+???
+Para facilitar los retries
+---
+# Caches everywhere
+---
+# Flows con Storage Queues
+
+---
+# SÚPER DEMO
+---
+background-image: url(leo.jpg)
+---
+background-image: url(github-unicorn.png)
+---
+## Gotchas
+
+* Falta de experiencia en serverless
+* Documentación mejorable
+* Nuevas características en preview
+
+
+???
+* A lot of features are in preview
+* Contradicciones en documentación
+---
+## Temas tratados
+
+.left-column[
+* &#10003; Pokemon
+* &#10003; Jackie Chan
+* &#10003; Batman
+* &#10003; Bola de Drac
+]
+.right-column[
+* &#10003; Leonardo
+* &#10003; Unicornios
+* &#10799; Futurama
+* &#10003; Gatos
+]
+---
+background-image: url('gray.png')
+![bender](bender.jpg)
+---
+background-image: url(twitter_mkhmarketing.jpg)
+
+.twitters[
+* @ciberado 
+* @capside
+]
+---
+background-image: url(cat2.jpg)
+---
+background-image: url(cat3.jpg)
+---
+background-image: url(cat4.jpg)
+
+ </textarea>
+    <script src="remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
+<!--
+---
+## TODO
+
+https://blogs.msdn.microsoft.com/appserviceteam/
+https://msftplayground.com/2016/05/azure-functions-microsoft-cognitive-services/
+https://channel9.msdn.com/Events/Connect/2016/MVAWebDev-03
+https://msftplayground.com/2016/05/azure-functions-microsoft-cognitive-services/
+https://westeurope.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa/console
+https://www.microsoft.com/cognitive-services/en-us/computer-vision-api
+
+
+steps:
+https://serverless.com/framework/docs/providers/azure/guide/quickstart/
+https://www.microsoft.com/cognitive-services/en-US/subscriptions (crear)
+[Buy on azure]
+Configurar
+https://westeurope.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa/console
+
+-->
+
